@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ji Liurulin · Urban Economics & Land Markets</title>
+<meta name="description" content="Ji Liurulin — PhD student in Urban Development and Management at Zhejiang University. Research on land markets, industrial policy, and local government finance in China." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#FAFAF7;
+    --paper-2:#F3F2EC;
+    --ink:#1E222B;
+    --ink-soft:#3A4049;
+    --muted:#6B7280;
+    --faint:#9AA0A8;
+    --line:#E4E2D9;
+    --line-2:#D7D4C8;
+    --mark:#8A4B2E;
+    --mark-soft:#B98A63;
+    --maxw:1180px;
+    --rail:300px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--mark);color:#fff;}
+
+  .mono{
+    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:.72rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--faint);
+  }
+
+  .shell{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 clamp(22px,5vw,64px);
+    display:grid;
+    grid-template-columns:var(--rail) 1fr;
+    gap:clamp(40px,6vw,96px);
+    align-items:start;
+  }
+
+  .rail{
+    position:sticky;
+    top:0;
+    padding:clamp(48px,7vh,90px) 0 40px;
+    align-self:start;
+  }
+  .rail .eyebrow{margin-bottom:18px;}
+  .name{
+    font-family:"Spectral",serif;
+    font-weight:600;
+    font-size:clamp(2.1rem,3vw,2.65rem);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    margin:0 0 4px;
+  }
+  .name .given{display:block;color:var(--ink);}
+  .name .fam{display:block;color:var(--mark);font-style:italic;font-weight:500;}
+  .role{
+    font-size:.95rem;
+    color:var(--ink-soft);
+    margin:14px 0 22px;
+    max-width:24ch;
+  }
+  .rail-divider{height:1px;background:var(--line);margin:4px 0 20px;}
+  .contact{display:flex;flex-direction:column;gap:9px;margin-bottom:26px;}
+  .contact a, .contact span{
+    font-size:.86rem;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:baseline;
+    gap:9px;
+    transition:color .18s ease;
+  }
+  .contact a .k, .contact span .k{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.66rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--faint);
+    width:46px;
+    flex:none;
+  }
+  .contact a:hover{color:var(--mark);}
+  .contact a:hover .k{color:var(--mark-soft);}
+
+  nav.toc{display:flex;flex-direction:column;gap:2px;}
+  nav.toc a{
+    font-size:.84rem;
+    color:var(--muted);
+    padding:5px 0;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    transition:color .18s ease;
+  }
+  nav.toc a::before{
+    content:"";
+    width:14px;height:1px;
+    background:var(--line-2);
+    transition:width .22s ease,background .22s ease;
+    flex:none;
+  }
+  nav.toc a:hover{color:var(--ink);}
+  nav.toc a:hover::before{width:24px;background:var(--mark);}
+
+  main{padding:clamp(48px,7vh,90px) 0 90px;min-width:0;}
+
+  /* about */
+  .about-text{
+    font-size:1rem;
+    color:var(--ink-soft);
+    line-height:1.78;
+    max-width:64ch;
+    margin:0 0 8px;
+  }
+  .about-text a{
+    color:var(--mark);
+    border-bottom:1px solid var(--mark-soft);
+    transition:border-color .18s ease;
+  }
+  .about-text a:hover{border-color:var(--mark);}
+
+  section{
+    padding-top:clamp(46px,6vh,70px);
+    scroll-margin-top:30px;
+  }
+  section.first{padding-top:clamp(40px,5vh,58px);}
+
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:26px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .sec-head h2{
+    font-family:"Spectral",serif;
+    font-weight:500;
+    font-size:1.5rem;
+    letter-spacing:-.01em;
+    margin:0;
+  }
+  .sec-head .mono{margin-left:auto;}
+
+  .entry{margin-bottom:30px;}
+  .entry:last-child{margin-bottom:0;}
+  .entry .top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .entry h3{
+    font-family:"Spectral",serif;
+    font-weight:500;
+    font-size:1.12rem;
+    line-height:1.35;
+    margin:0;
+    color:var(--ink);
+  }
+  .entry .when{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.74rem;
+    letter-spacing:.04em;
+    color:var(--faint);
+    white-space:nowrap;
+    flex:none;
+  }
+  .entry .org{color:var(--ink-soft);font-size:.95rem;margin:3px 0 0;}
+  .entry .org .place{color:var(--muted);}
+  .entry .meta{color:var(--muted);font-size:.9rem;margin:3px 0 0;}
+
+  ul.plain{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;}
+  ul.plain li{
+    padding:13px 0;
+    border-bottom:1px solid var(--line);
+    font-size:.95rem;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+  }
+  ul.plain li:last-child{border-bottom:0;}
+  ul.plain li .meta-r{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;
+    color:var(--faint);
+    white-space:nowrap;
+    flex:none;
+  }
+  ul.plain li .status{color:var(--mark);font-style:italic;font-family:"Spectral",serif;font-size:.86rem;}
+
+  .pub a.doi{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;
+    color:var(--mark);
+    border-bottom:1px solid transparent;
+    transition:border-color .18s ease;
+  }
+  .pub a.doi:hover{border-color:var(--mark-soft);}
+
+  /* research interests grid */
+  .skills{display:grid;grid-template-columns:1fr 1fr;gap:22px 40px;}
+  @media (max-width:560px){.skills{grid-template-columns:1fr;}}
+  .skills .grp .mono{display:block;margin-bottom:8px;color:var(--mark);}
+  .skills .grp p{margin:0;color:var(--ink-soft);font-size:.95rem;line-height:1.7;}
+
+  footer{
+    margin-top:70px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer .mono{color:var(--faint);}
+  footer a:hover{color:var(--mark);}
+
+  @media (max-width:880px){
+    .shell{grid-template-columns:1fr;gap:0;}
+    .rail{
+      position:static;
+      padding:clamp(40px,7vh,64px) 0 6px;
+    }
+    nav.toc{display:none;}
+    .role{max-width:none;}
+    main{padding-top:24px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= LEFT RAIL ================= -->
+  <aside class="rail">
+    <div class="eyebrow mono">Zhejiang University · 浙江大学</div>
+    <h1 class="name">
+      <span class="given">Ji</span>
+      <span class="fam">Liurulin</span>
+    </h1>
+    <p class="role">PhD student, Urban Development &amp; Management · School of Public Affairs</p>
+
+    <div class="rail-divider"></div>
+
+    <div class="contact">
+      <a href="mailto:jiliurulin@zju.edu.cn"><span class="k">Univ</span>jiliurulin@zju.edu.cn</a>
+      <a href="mailto:jiliurulin@gmail.com"><span class="k">Mail</span>jiliurulin@gmail.com</a>
+      <a href="https://scholar.google.com/citations?user=p5yCbFQAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener"><span class="k">Schol</span>Google Scholar</a>
+      <a href="CV_Lorraine_Liurulin_Ji.pdf" target="_blank" rel="noopener"><span class="k">CV</span>Download CV</a>
+    </div>
+
+    <nav class="toc" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research interests</a>
+      <a href="#publications">Publications</a>
+      <a href="#talks">Talks &amp; conferences</a>
+      <a href="#training">Summer schools</a>
+    </nav>
+  </aside>
+
+  <!-- ================= CONTENT ================= -->
+  <main>
+
+    <!-- about -->
+    <section id="about" class="first">
+      <div class="sec-head"><h2>About</h2><span class="mono">Hello</span></div>
+      <p class="about-text">
+        Hello and welcome to my homepage! I am a second-year PhD student in Urban Development and Management at the
+        <a href="http://www.spa.zju.edu.cn/spaenglish/" target="_blank" rel="noopener">School of Public Affairs, Zhejiang University</a>,
+        where I am very fortunate to be supervised by Prof.
+        <a href="http://www.spa.zju.edu.cn/spaenglish/2017/1211/c15464a730567/page.htm" target="_blank" rel="noopener">Xuewen Li</a>.
+        I hold a B.A. (Honors) in Economics from Minzu University of China, where I graduated as Beijing Outstanding Graduate and was named one of the Top 10 Outstanding Students university-wide.
+        You can find my CV <a href="CV_Lorraine_Liurulin_Ji.pdf" target="_blank" rel="noopener">here</a>.
+      </p>
+      <p class="about-text">
+        My research lies at the intersection of urban economics, land markets, and industrial policy.
+        Feel free to reach out — I am always happy to <a href="mailto:jiliurulin@gmail.com">chat</a>!
+      </p>
+    </section>
+
+    <!-- research interests -->
+    <section id="research">
+      <div class="sec-head"><h2>Research interests</h2><span class="mono">Fields</span></div>
+      <div class="skills">
+        <div class="grp">
+          <span class="mono">Primary</span>
+          <p>Urban Economics · Land Markets · Industrial Policy · Local Government Finance</p>
+        </div>
+        <div class="grp">
+          <span class="mono">Secondary</span>
+          <p>Political Economy of Development · Firm Dynamics in Emerging Economies · Causal Inference</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- publications -->
+    <section id="publications">
+      <div class="sec-head"><h2>Publications</h2><span class="mono">Peer-reviewed</span></div>
+
+      <div class="entry pub">
+        <div class="top">
+          <h3>Land as a Discretionary Extra-Budgetary Revenue Tool: Land Reserve System, Monopoly Supply Power and Local Government Finance</h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="org">Xuewen Li, <b style="color:var(--ink)">Liurulin Ji</b>, Hongyang Li, Lianying Yao — <em>Journal of Asian Public Policy</em></p>
+        <p class="meta"><a class="doi" href="https://doi.org/10.1080/17516234.2026.2644515" target="_blank" rel="noopener">10.1080/17516234.2026.2644515</a></p>
+      </div>
+
+      <div class="entry pub">
+        <div class="top">
+          <h3>Enhancing Exchange-Rate Forecasting with Multi-Scale Residual LSTM and Dual-Task Learning: An Interpretable Framework with SHAP Analysis</h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="org">Hongyang Li, <b style="color:var(--ink)">Liurulin Ji</b>, Jiayi Liao, Xuewen Li — <em>Expert Systems with Applications</em></p>
+        <p class="meta"><a class="doi" href="https://doi.org/10.1016/j.eswa.2026.132095" target="_blank" rel="noopener">10.1016/j.eswa.2026.132095</a></p>
+      </div>
+    </section>
+
+    <!-- talks -->
+    <section id="talks">
+      <div class="sec-head"><h2>Talks &amp; conferences</h2><span class="mono">Selected</span></div>
+      <ul class="plain">
+        <li><span>4th Summer Meeting in Urban Economics, CUEA — Wuhan University <span class="status">Oral</span></span><span class="meta-r">Jul 2026</span></li>
+        <li><span>12th Int'l Workshop on Regional, Urban &amp; Spatial Economics (RUSE), Hubei <span class="status">Oral</span></span><span class="meta-r">Jun 2025</span></li>
+        <li><span>7th Camphor Tree Regional Economics Forum, Zhejiang <span class="status">Oral</span></span><span class="meta-r">Jun 2025</span></li>
+        <li><span>1st Yangtze River Delta Public Management Annual Conference, Zhejiang <span class="status">Oral</span></span><span class="meta-r">Nov 2024</span></li>
+        <li><span>Symposium on Urban Renewal and Public Policy, Shanghai <span class="status">Oral</span></span><span class="meta-r">Nov 2024</span></li>
+      </ul>
+    </section>
+
+    <!-- training -->
+    <section id="training">
+      <div class="sec-head"><h2>Summer schools &amp; training</h2><span class="mono">Programs</span></div>
+      <ul class="plain">
+        <li><span>Fudan SIRPA Int'l Summer School — "Community Governance &amp; De-Dependent Development in the Global South"</span><span class="meta-r">Jul 2026</span></li>
+        <li><span>IPPA Hong Kong Summer School on Public Policy, Hang Seng University <span class="status">Paper</span></span><span class="meta-r">Jun 2026</span></li>
+        <li><span>Fudan BRICS Summer School — Full scholarship · Grade A (Top 10%)</span><span class="meta-r">2024</span></li>
+      </ul>
+    </section>
+
+    <footer>
+      <span class="mono">Ji Liurulin · Hangzhou</span>
+      <span class="mono"><a href="mailto:jiliurulin@gmail.com">jiliurulin@gmail.com</a></span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    document.querySelectorAll('section, .entry').forEach(el=>{
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(14px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+    });
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.style.opacity='1';
+          e.target.style.transform='none';
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.08, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('section, .entry').forEach(el=>io.observe(el));
+  }
+</script>
+</body>
+</html>
